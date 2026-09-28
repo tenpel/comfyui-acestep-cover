@@ -1,0 +1,1148 @@
+{
+  "id": "40170436-5f74-4aea-972e-7b60e24a8f11",
+  "revision": 0,
+  "last_node_id": 108,
+  "last_link_id": 265,
+  "nodes": [
+    {
+      "id": 97,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -210,
+        -670
+      ],
+      "size": [
+        428.09895833333337,
+        98
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "ckpt_name",
+          "name": "ckpt_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "ckpt_name"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            247
+          ]
+        },
+        {
+          "localized_name": "CLIP",
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            244
+          ]
+        },
+        {
+          "localized_name": "VAE",
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            248,
+            262
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "models": [
+          {
+            "name": "ace_step_1.5_turbo_aio.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files/resolve/main/checkpoints/ace_step_1.5_turbo_aio.safetensors",
+            "directory": "checkpoints"
+          }
+        ],
+        "enableTabs": false,
+        "tabWidth": 65,
+        "tabXOffset": 10,
+        "hasSecondTab": false,
+        "secondTabText": "Send Back",
+        "secondTabOffset": 80,
+        "secondTabWidth": 65
+      },
+      "widgets_values": [
+        "ace_step_1.5_turbo_aio.safetensors"
+      ]
+    },
+    {
+      "id": 78,
+      "type": "ModelSamplingAuraFlow",
+      "pos": [
+        924.0130208333334,
+        -670
+      ],
+      "size": [
+        330,
+        60
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 247
+        },
+        {
+          "localized_name": "shift",
+          "name": "shift",
+          "type": "FLOAT",
+          "widget": {
+            "name": "shift"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            175
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "ModelSamplingAuraFlow",
+        "enableTabs": false,
+        "tabWidth": 65,
+        "tabXOffset": 10,
+        "hasSecondTab": false,
+        "secondTabText": "Send Back",
+        "secondTabOffset": 80,
+        "secondTabWidth": 65
+      },
+      "widgets_values": [
+        3
+      ]
+    },
+    {
+      "id": 18,
+      "type": "VAEDecodeAudio",
+      "pos": [
+        1296.0130208333335,
+        -670
+      ],
+      "size": [
+        190,
+        46
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "samples",
+          "name": "samples",
+          "type": "LATENT",
+          "link": 256
+        },
+        {
+          "localized_name": "vae",
+          "name": "vae",
+          "type": "VAE",
+          "link": 248
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "AUDIO",
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            260
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "VAEDecodeAudio",
+        "enableTabs": false,
+        "tabWidth": 65,
+        "tabXOffset": 10,
+        "hasSecondTab": false,
+        "secondTabText": "Send Back",
+        "secondTabOffset": 80,
+        "secondTabWidth": 65
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 3,
+      "type": "KSampler",
+      "pos": [
+        930,
+        -550
+      ],
+      "size": [
+        329.38802083333337,
+        262
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 175
+        },
+        {
+          "localized_name": "positive",
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 265
+        },
+        {
+          "localized_name": "negative",
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 119
+        },
+        {
+          "localized_name": "latent_image",
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 249
+        },
+        {
+          "localized_name": "seed",
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          },
+          "link": 258
+        },
+        {
+          "localized_name": "steps",
+          "name": "steps",
+          "type": "INT",
+          "widget": {
+            "name": "steps"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "cfg",
+          "name": "cfg",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "sampler_name",
+          "name": "sampler_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "sampler_name"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "scheduler",
+          "name": "scheduler",
+          "type": "COMBO",
+          "widget": {
+            "name": "scheduler"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "denoise",
+          "name": "denoise",
+          "type": "FLOAT",
+          "widget": {
+            "name": "denoise"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "LATENT",
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            256
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "KSampler",
+        "enableTabs": false,
+        "tabWidth": 65,
+        "tabXOffset": 10,
+        "hasSecondTab": false,
+        "secondTabText": "Send Back",
+        "secondTabOffset": 80,
+        "secondTabWidth": 65
+      },
+      "widgets_values": [
+        303,
+        "fixed",
+        8,
+        1,
+        "euler",
+        "simple",
+        1
+      ]
+    },
+    {
+      "id": 47,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        680,
+        30
+      ],
+      "size": [
+        204.134765625,
+        26
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "conditioning",
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 255
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            119
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "ConditioningZeroOut",
+        "enableTabs": false,
+        "tabWidth": 65,
+        "tabXOffset": 10,
+        "hasSecondTab": false,
+        "secondTabText": "Send Back",
+        "secondTabOffset": 80,
+        "secondTabWidth": 65
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 102,
+      "type": "PrimitiveNode",
+      "pos": [
+        -140,
+        -290
+      ],
+      "size": [
+        268.3984375,
+        82
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          },
+          "links": [
+            257,
+            258
+          ]
+        }
+      ],
+      "title": "seed",
+      "properties": {
+        "Run widget replace on values": false
+      },
+      "widgets_values": [
+        303,
+        "increment"
+      ]
+    },
+    {
+      "id": 105,
+      "type": "MarkdownNote",
+      "pos": [
+        -680,
+        -710
+      ],
+      "size": [
+        440,
+        520
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "## ACE-Step 1.5 cover mode (audio reference)\n\nThe **Reference Audio** node (`ReferenceTimbreAudio`) switches ACE-Step 1.5 into **cover mode**: the output follows the reference's arrangement, rhythm and energy curve, while the tags and the structure text decide instrumentation and style.\n\n**Before you run**\n\n- Upload a reference in **Step 4**. Use audio you have the rights to.\n- Make the reference at least as long as *Song Duration*; after its end the model gets silence.\n- Set **bpm** to the reference's tempo.\n- Keep **generate_audio_codes** off. In this mode `cfg_scale`, `temperature`, `top_p`, `top_k` and `min_p` only drive the audio-code LM, which is skipped, so they have no effect.\n- Turbo model: KSampler steps 8, cfg 1.\n\n**Model**\n\n- [ace_step_1.5_turbo_aio.safetensors](https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files/resolve/main/checkpoints/ace_step_1.5_turbo_aio.safetensors) → `ComfyUI/models/checkpoints/`\n"
+      ],
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 99,
+      "type": "PrimitiveNode",
+      "pos": [
+        -140,
+        -470
+      ],
+      "size": [
+        278.9713541666667,
+        82
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "widget": {
+            "name": "seconds"
+          },
+          "links": [
+            250,
+            251
+          ]
+        }
+      ],
+      "title": "Song Duration",
+      "properties": {
+        "Run widget replace on values": false
+      },
+      "widgets_values": [
+        240,
+        "fixed"
+      ]
+    },
+    {
+      "id": 107,
+      "type": "VAEEncodeAudio",
+      "pos": [
+        300,
+        150
+      ],
+      "size": [
+        260,
+        46
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 261
+        },
+        {
+          "localized_name": "vae",
+          "name": "vae",
+          "type": "VAE",
+          "link": 262
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "LATENT",
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            263
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.21.1",
+        "Node name for S&R": "VAEEncodeAudio"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 108,
+      "type": "ReferenceTimbreAudio",
+      "pos": [
+        640,
+        120
+      ],
+      "size": [
+        260,
+        66
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "conditioning",
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 264
+        },
+        {
+          "localized_name": "latent",
+          "name": "latent",
+          "shape": 7,
+          "type": "LATENT",
+          "link": 263
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            265
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.21.1",
+        "Node name for S&R": "ReferenceTimbreAudio"
+      },
+      "widgets_values": [],
+      "title": "Reference Audio (cover mode)"
+    },
+    {
+      "id": 104,
+      "type": "SaveAudioMP3",
+      "pos": [
+        1528.0130208333335,
+        -670
+      ],
+      "size": [
+        550,
+        150
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 260
+        },
+        {
+          "localized_name": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "quality",
+          "name": "quality",
+          "type": "COMBO",
+          "widget": {
+            "name": "quality"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "audioUI",
+          "name": "audioUI",
+          "type": "AUDIO_UI",
+          "widget": {
+            "name": "audioUI"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "SaveAudioMP3",
+        "enableTabs": false,
+        "tabWidth": 65,
+        "tabXOffset": 10,
+        "hasSecondTab": false,
+        "secondTabText": "Send Back",
+        "secondTabOffset": 80,
+        "secondTabWidth": 65
+      },
+      "widgets_values": [
+        "audio/acestep-cover",
+        "320k"
+      ]
+    },
+    {
+      "id": 94,
+      "type": "TextEncodeAceStepAudio1.5",
+      "pos": [
+        270.09895833333337,
+        -670
+      ],
+      "size": [
+        611.9140625,
+        569.7526041666667
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "clip",
+          "name": "clip",
+          "type": "CLIP",
+          "link": 244
+        },
+        {
+          "localized_name": "tags",
+          "name": "tags",
+          "type": "STRING",
+          "widget": {
+            "name": "tags"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "lyrics",
+          "name": "lyrics",
+          "type": "STRING",
+          "widget": {
+            "name": "lyrics"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "seed",
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          },
+          "link": 257
+        },
+        {
+          "localized_name": "bpm",
+          "name": "bpm",
+          "type": "INT",
+          "widget": {
+            "name": "bpm"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "duration",
+          "name": "duration",
+          "type": "FLOAT",
+          "widget": {
+            "name": "duration"
+          },
+          "link": 251
+        },
+        {
+          "localized_name": "timesignature",
+          "name": "timesignature",
+          "type": "COMBO",
+          "widget": {
+            "name": "timesignature"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "language",
+          "name": "language",
+          "type": "COMBO",
+          "widget": {
+            "name": "language"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "keyscale",
+          "name": "keyscale",
+          "type": "COMBO",
+          "widget": {
+            "name": "keyscale"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "generate_audio_codes",
+          "name": "generate_audio_codes",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "generate_audio_codes"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "cfg_scale",
+          "name": "cfg_scale",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg_scale"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "temperature",
+          "name": "temperature",
+          "type": "FLOAT",
+          "widget": {
+            "name": "temperature"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "top_p",
+          "name": "top_p",
+          "type": "FLOAT",
+          "widget": {
+            "name": "top_p"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "top_k",
+          "name": "top_k",
+          "type": "INT",
+          "widget": {
+            "name": "top_k"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "min_p",
+          "name": "min_p",
+          "type": "FLOAT",
+          "widget": {
+            "name": "min_p"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            264,
+            255
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "TextEncodeAceStepAudio1.5",
+        "enableTabs": false,
+        "tabWidth": 65,
+        "tabXOffset": 10,
+        "hasSecondTab": false,
+        "secondTabText": "Send Back",
+        "secondTabOffset": 80,
+        "secondTabWidth": 65
+      },
+      "widgets_values": [
+        "Berlin techno, acid techno, distorted TR-909 kick, aggressive TB-303 acid basslines, high-resonance squelch, industrial percussion, metallic textures, dark warehouse atmosphere, relentless energy, hypnotic modular synths, driving and gritty, instrumental, no vocals",
+        "[Intro] 16s\n[distorted 909 kick, sharp closed hi-hats, industrial noise floor]\n[Instrumental]\n\n[Verse 1] 32s\n[aggressive TB-303 acid sequence starts, resonant filter chirps, driving industrial percussion]\n[Instrumental]\n\n[Bridge] 16s\n[high-resonance 303 sweeps, metallic synth stabs, building white noise tension, rapid snare rolls]\n[Instrumental]\n\n[Chorus] 32s\n[full intensity, pounding distorted kick, multiple overlapping acid lines, rhythmic claps, dark warehouse atmosphere]\n[Instrumental]\n\n[Breakdown] 16s\n[drums drop out, oscillating resonant 303 squelch, dark modular drones, cold reverb]\n[Instrumental]\n\n[Chorus] 32s\n[relentless return of the beat, heavy 909 sub-bass, screaming acid leads, high-pass filter modulations]\n[Instrumental]\n\n[Outro] 24s\n[stripping back to heavy kick and industrial hats, fading acid filter, final resonant echo]\n[Instrumental]",
+        303,
+        "increment",
+        136,
+        240,
+        "4",
+        "en",
+        "D minor",
+        false,
+        2.5,
+        0.75,
+        0.9,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 98,
+      "type": "EmptyAceStep1.5LatentAudio",
+      "pos": [
+        -140,
+        -150
+      ],
+      "size": [
+        314.89583333333337,
+        82
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "seconds",
+          "name": "seconds",
+          "type": "FLOAT",
+          "widget": {
+            "name": "seconds"
+          },
+          "link": 250
+        },
+        {
+          "localized_name": "batch_size",
+          "name": "batch_size",
+          "type": "INT",
+          "widget": {
+            "name": "batch_size"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "LATENT",
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            249
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "EmptyAceStep1.5LatentAudio",
+        "enableTabs": false,
+        "tabWidth": 65,
+        "tabXOffset": 10,
+        "hasSecondTab": false,
+        "secondTabText": "Send Back",
+        "secondTabOffset": 80,
+        "secondTabWidth": 65
+      },
+      "widgets_values": [
+        240,
+        1
+      ]
+    },
+    {
+      "id": 106,
+      "type": "LoadAudio",
+      "pos": [
+        -210,
+        120
+      ],
+      "size": [
+        428,
+        140
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "audio",
+          "name": "audio",
+          "type": "COMBO",
+          "widget": {
+            "name": "audio"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "audioUI",
+          "name": "audioUI",
+          "type": "AUDIO_UI",
+          "widget": {
+            "name": "audioUI"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "choose file to upload",
+          "name": "upload",
+          "type": "AUDIOUPLOAD",
+          "widget": {
+            "name": "upload"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "AUDIO",
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            261
+          ]
+        }
+      ],
+      "title": "Reference audio (≥ Song Duration)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.21.1",
+        "Node name for S&R": "LoadAudio"
+      },
+      "widgets_values": [
+        "reference.mp3",
+        null,
+        null
+      ]
+    }
+  ],
+  "links": [
+    [
+      119,
+      47,
+      0,
+      3,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      175,
+      78,
+      0,
+      3,
+      0,
+      "MODEL"
+    ],
+    [
+      244,
+      97,
+      1,
+      94,
+      0,
+      "CLIP"
+    ],
+    [
+      247,
+      97,
+      0,
+      78,
+      0,
+      "MODEL"
+    ],
+    [
+      248,
+      97,
+      2,
+      18,
+      1,
+      "VAE"
+    ],
+    [
+      249,
+      98,
+      0,
+      3,
+      3,
+      "LATENT"
+    ],
+    [
+      250,
+      99,
+      0,
+      98,
+      0,
+      "FLOAT"
+    ],
+    [
+      251,
+      99,
+      0,
+      94,
+      5,
+      "FLOAT"
+    ],
+    [
+      255,
+      94,
+      0,
+      47,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      256,
+      3,
+      0,
+      18,
+      0,
+      "LATENT"
+    ],
+    [
+      257,
+      102,
+      0,
+      94,
+      3,
+      "INT"
+    ],
+    [
+      258,
+      102,
+      0,
+      3,
+      4,
+      "INT"
+    ],
+    [
+      260,
+      18,
+      0,
+      104,
+      0,
+      "AUDIO"
+    ],
+    [
+      261,
+      106,
+      0,
+      107,
+      0,
+      "AUDIO"
+    ],
+    [
+      262,
+      97,
+      2,
+      107,
+      1,
+      "VAE"
+    ],
+    [
+      263,
+      107,
+      0,
+      108,
+      1,
+      "LATENT"
+    ],
+    [
+      264,
+      94,
+      0,
+      108,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      265,
+      108,
+      0,
+      3,
+      1,
+      "CONDITIONING"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Step 1 - Load Model",
+      "bounding": [
+        -220,
+        -740,
+        448.09895833333337,
+        181.6
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "Step 2 - Duration",
+      "bounding": [
+        -220,
+        -540,
+        450,
+        170
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "Step 3 - Prompt",
+      "bounding": [
+        260,
+        -740,
+        640,
+        820
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "Step 4 - Reference audio (cover mode)",
+      "bounding": [
+        -220,
+        50,
+        1140,
+        240
+      ],
+      "color": "#8A8",
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.8,
+      "offset": [
+        700,
+        800
+      ]
+    },
+    "frontendVersion": "1.37.11"
+  },
+  "version": 0.4
+}
